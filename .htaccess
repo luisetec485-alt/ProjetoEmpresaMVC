@@ -1,0 +1,19 @@
+# Bloqueia a listagem de diretórios (Segurança)
+Options -Indexes
+
+# Define páginas de erro persolanizadas
+ErrorDocument 404 /Index.php?action=home
+ErrorDocument 500 /Index.php?action=home
+
+# Garante que arquivos sensíveis  (como os de configuração)
+# não sejam acessadosdiretamente
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from allow
+</FilesMatch>
+
+# Ativa compressão para carregar mais rápido
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css 
+    application/javascript
+</IfModule>
